@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Product</title>
+</head>
+<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
+
+  <h1>Grow Your Business Faster</h1>
+  <p>Simple tools to help you scale</p>
+
+  <button onclick="signupClick()" style="padding:12px 20px; margin:10px;">
+    Sign Up
+  </button>
+
+  <button onclick="demoClick()" style="padding:12px 20px; margin:10px;">
+    Request Demo
+  </button>
+
+  <script src="https://cdn.amplitude.com/libs/amplitude-8.21.4-min.gz.js"></script>
+  <script>
+    amplitude.getInstance().init("ff3edef0c015a88422581337e9f74d01");
+
+    amplitude.getInstance().logEvent("page_viewed");
+
+    function signupClick() {
+      amplitude.getInstance().logEvent("cta_signup_clicked");
+    }
+
+    function demoClick() {
+      amplitude.getInstance().logEvent("cta_demo_clicked");
+    }
+  </script>
+
+</body>
+</html>
