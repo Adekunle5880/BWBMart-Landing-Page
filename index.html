@@ -12,27 +12,27 @@
   <button onclick="demoClick()">Request Demo</button>
 
   <!-- Amplitude CDN -->
-  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.0-min.js"></script>
+<script src="https://cdn.amplitude.com/libs/amplitude-8.21.4-min.gz.js"></script>
 
-  <script>
-    // Initialize (EU server as required)
-    amplitude.init("ff3edef0c015a88422581337e9f74d01");
+<script>
+  var amplitudeInstance = amplitude.getInstance();
 
-    console.log("Amplitude initialized");
+  amplitudeInstance.init("ff3edef0c015a88422581337e9f74d01");
 
-    // Track page view
-    amplitude.track("page_viewed");
+  console.log("Amplitude initialized");
 
-    function signupClick() {
-      console.log("Signup clicked");
-      amplitude.track("cta_signup_clicked");
-    }
+  amplitudeInstance.logEvent("page_viewed");
 
-    function demoClick() {
-      console.log("Demo clicked");
-      amplitude.track("cta_demo_clicked");
-    }
-  </script>
+  function signupClick() {
+    console.log("Signup clicked");
+    amplitudeInstance.logEvent("cta_signup_clicked");
+  }
+
+  function demoClick() {
+    console.log("Demo clicked");
+    amplitudeInstance.logEvent("cta_demo_clicked");
+  }
+</script>
 
 </body>
 </html>
