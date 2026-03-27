@@ -2,7 +2,20 @@
 <html>
 <head>
   <title>Demo Product</title>
+
+  <!-- Amplitude script (PUT IN HEAD) -->
+  <script src="https://cdn.eu.amplitude.com/script/ff3edef0c015a88422581337e9f74d01.js"></script>
+  <script>
+    window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+
+    window.amplitude.init('ff3edef0c015a88422581337e9f74d01', {
+      serverZone: "EU",
+      autocapture: true
+    });
+  </script>
+
 </head>
+
 <body style="text-align:center; margin-top:100px; font-family:sans-serif;">
 
   <h1>Grow Your Business Faster</h1>
@@ -11,28 +24,17 @@
   <button onclick="signupClick()">Sign Up</button>
   <button onclick="demoClick()">Request Demo</button>
 
-  <!-- Amplitude CDN -->
-<script src="https://cdn.amplitude.com/libs/amplitude-8.21.4-min.gz.js"></script>
+  <script>
+    function signupClick() {
+      console.log("Signup clicked");
+      window.amplitude.track("cta_signup_clicked");
+    }
 
-<script>
-  var amplitudeInstance = amplitude.getInstance();
-
-  amplitudeInstance.init("ff3edef0c015a88422581337e9f74d01");
-
-  console.log("Amplitude initialized");
-
-  amplitudeInstance.logEvent("page_viewed");
-
-  function signupClick() {
-    console.log("Signup clicked");
-    amplitudeInstance.logEvent("cta_signup_clicked");
-  }
-
-  function demoClick() {
-    console.log("Demo clicked");
-    amplitudeInstance.logEvent("cta_demo_clicked");
-  }
-</script>
+    function demoClick() {
+      console.log("Demo clicked");
+      window.amplitude.track("cta_demo_clicked");
+    }
+  </script>
 
 </body>
 </html>
